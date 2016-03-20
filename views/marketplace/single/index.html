@@ -1,0 +1,145 @@
+<div class="page-top">
+    <img ng-src="{{ single_item.photo }}" alt="Item">
+    <div class="container special-container top">
+        <div class="item-fav">
+            <a href="#" class="icon-fav" title="Add to Favourite">Add to Favourite"></a>
+            <span class="fav-count">7</span>
+        </div><!-- End .item-fav -->
+        <a href="#" class="close-btn" title="Close">
+            <span class="sr-only">Close Button</span>
+            <i class="icon-close"></i>
+        </a>
+    </div><!-- End .container -->
+    <div class="container special-container">
+        <div class="item-header">
+            <h2 class="item-title">{{ single_item.name }}</h2>
+            <div class="item-meta">
+                <div class="ratings-container">
+                    <div class="ratings-wrapper">
+                        <div class="ratings" style="width:80%;"></div><!-- End .ratings -->
+                    </div><!-- End .ratings-wrapper -->
+                    <span class="ratings-count">(2)</span>
+                </div><!-- End .ratings-container -->
+                <span class="dot-separator"></span>
+                <div class="item-category">
+                    <a href="#" title="Technology">{{ single_item.category_name }}</a>
+                </div><!-- End .item-tags -->
+                <span class="dot-separator"></span>
+                <div class="item-date">
+                    2 months ago
+                </div><!-- End .item-date -->
+            </div><!-- End .item-meta -->
+            <span class="item-price">${{ single_item.price }}</span>
+        </div><!-- End .item-header -->
+    </div><!-- End .container -->
+</div><!-- End .page-top -->
+<div class="container special-container">
+
+    <div class="row special-row">
+        <div class="col-content">
+            <div class="single-item-desc">
+                <h3>Description</h3>
+                <p>{{ single_item.description }}</p>
+            </div><!-- End .single-item-desc -->
+
+            <div class="single-gallery">
+                <h3>Photos</h3>
+
+                <div class="row">
+                    <div class="popup-gallery">
+                        <div class="col-xs-7">
+                            <a href="images/knacks/single/item1.jpg" class="zoom-item" title="Knack image"><img src="images/knacks/single/item1.jpg" alt="item1"></a>
+                        </div>
+                        <div class="col-xs-5">
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <a href="images/knacks/single/item2.jpg" class="zoom-item" title="Knack image"><img src="images/knacks/single/item2.jpg" alt="item2"></a>
+                                </div>
+                                <div class="col-xs-6">
+                                    <a href="images/knacks/single/item3.jpg" class="zoom-item" title="Knack image"><img src="images/knacks/single/item3.jpg" alt="item3"></a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <a href="images/knacks/single/item4.jpg" class="zoom-item" title="Knack image"><img src="images/knacks/single/item4.jpg" alt="item4"></a>
+                                </div>
+                                <div class="col-xs-6">
+                                    <a href="images/knacks/single/item5.jpg" class="zoom-item" title="Knack image"><img src="images/knacks/single/item5.jpg" alt="item5"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- End .single-gallery -->
+
+            <div class="reviews-container">
+                <h3>Reviews (2)<a href="#">Write review</a></h3>
+                <div class="review">
+                    <div class="review-wrapper clearfix">
+                        <div class="item-owner">
+                            <figure>
+                                <img src="images/users/user1.jpg" alt="Derek Wilson">
+                            </figure>
+                            <div class="owner-meta">
+                                <h4><a href="#">Derek Wilson</a></h4>
+                                <span>Fisher college</span>
+                            </div><!-- End .owner-meta -->
+                        </div><!-- End .item-owner -->
+                        <div class="ratings-container">
+                            <div class="ratings-wrapper">
+                                <div class="ratings" style="width:80%;"></div><!-- End .ratings -->
+                            </div><!-- End .ratings-wrapper -->
+                        </div><!-- End .ratings-container -->
+                    </div><!-- End .review-wrapper -->
+                    <div class="review-content">
+                        Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.
+                    </div><!-- End .review-content -->
+                </div><!-- .End .review -->
+
+                <div class="review">
+                    <div class="review-wrapper clearfix">
+                        <div class="item-owner">
+                            <figure>
+                                <img src="images/users/user6.jpg" alt="James Poter">
+                            </figure>
+                            <div class="owner-meta">
+                                <h4><a href="#">James Poter</a></h4>
+                                <span>Harvard University</span>
+                            </div><!-- End .owner-meta -->
+                        </div><!-- End .item-owner -->
+                        <div class="ratings-container">
+                            <div class="ratings-wrapper">
+                                <div class="ratings" style="width:100%;"></div><!-- End .ratings -->
+                            </div><!-- End .ratings-wrapper -->
+                        </div><!-- End .ratings-container -->
+                    </div><!-- End .review-wrapper -->
+                    <div class="review-content">
+                        It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout going to use a passage of Lorem Ipsum, you need.
+                    </div><!-- End .review-content -->
+                </div><!-- .End .review -->
+            </div><!-- End .reviews-container -->
+        </div><!-- End .col-content -->
+        <div class="col-side">
+            <div class="box-owner">
+                <div class="item-owner">
+                    <figure>
+                        <img src="images/users/user1.png" alt="Jessica Morgan">
+                        <span class="owner-status on"></span>
+                    </figure>
+                    <div class="owner-meta">
+                        <h4><a href="#">{{ single_item.owner_name }}</a></h4>
+                        <span>{{ single_item.owner_college }}<span class="dot-separator"></span>22 y/o</span>
+                    </div><!-- End .owner-meta -->
+                    <div class="ratings-container">
+                        <div class="ratings-wrapper">
+                            <div class="ratings" style="width:80%;"></div><!-- End .ratings -->
+                        </div><!-- End .ratings-wrapper -->
+                        <span class="ratings-count"><strong>4.2</strong> / 5.0</span>
+                    </div><!-- End .ratings-container -->
+                </div><!-- End .item-owner -->
+                <a href="#" class="btn btn-custom btn-block"><strong>BUY ITEM</strong></a>
+                <a href="#" class="btn btn-custom5 btn-border btn-block">Chat Now</a>
+            </div><!-- End .box-owner -->
+        </div><!-- End .col-side -->
+    </div><!-- End .special-row -->
+</div><!-- End .container -->

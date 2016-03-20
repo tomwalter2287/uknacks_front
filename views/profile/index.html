@@ -1,0 +1,500 @@
+    <div id="content" role="main" class="profile">
+        <div class="container special-container" ng-show="user_not_found">
+            <br><br>
+            <h1>User Not Found</h1>
+        </div>
+        <div class="container special-container" ng-hide="user_not_found">
+            <div class="row special-row">
+                <div class="col-content">
+                      <!-- Nav tabs -->
+                      <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" ng-class="{active:active_tab=='knacks'}">
+                                <a href="" aria-controls="profile-knacks" ng-click="activate_knacks()">
+                                    Knacks ({{ knacks_total }})</a>
+                            </li>
+                            <li role="presentation" ng-class="{active:active_tab=='items'}">
+                                <a href="" aria-controls="profile-items" ng-click="activate_items()">
+                                    Selling ({{ items_total }})</a></li>
+                        </ul>
+
+                      <!-- Tab panes -->
+                      <div class="tab-content">
+						<div role="tabpanel" class="tab-pane active" id="welcome-section">
+							<p class="welcome-title">Welcome to</p>
+							<img src="images/welcome-logo.png" />
+							<p class="welcome-message">
+								Get started by filling out <br/>your profile in the left column
+							</p>
+							<div class="welcome-content">
+								<div class="knacks">
+									<p class="title">KNACKS</p>
+									<p class="content">Services you offer are called Knacks</p>
+									<p class="message">Start Doing Business</p>
+									<a href="javascript:void(0);" class="btn btn-custom">
+                                        POST YOUR FIRST KNACK
+										<!--<span class="glyphicon glyphicon-indent-left visible-xs"></span>-->
+									</a>
+                                    <p class="link">Click here for some ideas</p>
+								</div>
+								<div class="store">
+									<p class="title">STORE</p>
+									<p class="content">Items you sell are shown in your store</p>
+									<p class="message">Open Your Store</p>
+									<a href="javascript:void(0);" class="btn btn-custom">
+                                        SELL YOUR FIRST ITEM
+										<!--<span class="glyphicon glyphicon-indent-left visible-xs"></span>-->
+									</a>
+								</div>
+								<div style="clear: both;"></div>
+							</div>
+						</div>
+                        <div role="tabpanel" class="tab-pane" id="profile-knacks" ng-class="{active:active_tab=='knacks'}">
+                            <article class="item clearfix" ng-repeat="item in user.knacks">
+                                <div class="item-header">
+                                    <a href="#" title="{{ item.name }}">
+                                        <img ng-src="{{ item.photo }}" alt="Knack image">
+                                    </a>
+                                    <span class="item-price">${{ item.price }}</span>
+                                    <div class="item-fav">
+                                        <span class="fav-count">4</span>
+                                        <a href="#" class="icon-fav" title="Add to Favourite">Add to Favourite"></a>
+                                    </div><!-- End .item-fav -->
+                                </div><!-- End .item-header -->
+                                <div class="item-content">
+                                    <h2 class="item-title profile-item-title">
+                                        <a href="#">{{ item.name }}</a>
+                                    </h2>
+                                    <p>{{ item.description }}</p>
+                                    <div class="item-meta">
+                                        <div class="ratings-container">
+                                            <div class="ratings-wrapper">
+                                                <div class="ratings" style="width:80%;"></div><!-- End .ratings -->
+                                            </div><!-- End .ratings-wrapper -->
+                                            <span class="ratings-count">(5)</span>
+                                        </div><!-- End .ratings-container -->
+                                        <span class="dot-separator"></span>
+                                        <div class="item-category">
+                                            <a href="#" title="Photography">{{ item.category_name }}</a>
+                                        </div><!-- End .item-category -->
+                                    </div><!-- End .item-meta -->
+                                    <div class="item-action-wrapper clearfix">
+                                        <div class="item-owner" ng-hide="currentMenu=='profile_edit'">
+                                            <figure>
+                                                <img ng-src="{{ item.owner_picture }}" alt="{{ item.owner_name }}" width="35px" height="35px">
+                                            </figure>
+                                            <div class="owner-meta">
+                                                <h4><a href="#">{{ item.owner_name }}</a><span class="owner-status on"></span></h4>
+                                                <span>{{ item.college }}</span>
+                                            </div><!-- End .owner-meta -->
+                                        </div><!-- End .item-owner -->
+                                        <div class="item-action">
+                                            <a href="" class="btn btn-custom4 btn-border" ng-show="currentMenu=='profile_edit'" ng_click="edit_knack(item)">Edit</a>
+                                            <div class="dropdown promote-dropdown">
+                                                <a href="" class="btn btn-custom3 btn-block user-promote-btn dropdown-toggle" data-toggle="dropdown"><strong>Promote</strong></a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="#" ><span class="social-icon icon-facebook-color" title="Like us on Facebook">Facebook</span> Share on Facebook</a></li>
+                                                    <li><a href="#" ><span class="social-icon icon-twitter-color" title="Like us on Facebook">Twitter</span> Share on Twitter</a></li>
+                                                    <li><a href="#" ><span class="social-icon icon-instagram-color" title="Like us on Facebook">Instagram</span> Share on Instagram</a></li>
+                                                </ul>
+                                            </div><!-- End .dropdown -->
+                                        </div><!-- End .item-action -->
+                                    </div><!-- End .item-action-wrapper -->
+                                </div><!-- End .item-content -->
+                            </article>
+                        </div><!-- End .tab-pane -->
+                        <div role="tabpanel" class="tab-pane" id="profile-items" ng-class="{active:active_tab=='items'}">
+                            <article class="item item-list clearfix" ng-repeat="item in user.items">
+                                <div class="item-header">
+                                    <a href="" title="Brand new iPhone 5s 16gb of space White + Green case">
+                                        <img ng-src="{{ item.photo }}" alt="Knack image">
+                                    </a>
+                                    <span class="item-price">${{ item.price }}</span>
+                                    <div class="item-fav">
+                                        <a href="" class="icon-fav" title="Add to Favourite">Add to Favourite"></a>
+                                    </div><!-- End .item-fav -->
+                                </div><!-- End .item-header -->
+                                <div class="item-content">
+                                    <h2 class="item-title profile-item-title">
+                                        <a href="">{{ item.name }}</a>
+                                    </h2>
+                                    <p>{{ item.description }}</p>
+                                    <div class="item-meta">
+                                        <span class="item-date">
+                                            <i class="icon-date"></i>Posted 2 days ago
+                                        </span>
+                                        <span class="dot-separator"></span>
+                                        <div class="item-category">
+                                            <a href="" title="{{ item.category_name }}">{{ item.category_name }}</a>
+                                        </div><!-- End .item-tags -->
+                                    </div><!-- End .item-meta -->
+                                    <div class="item-owner">
+                                        <figure>
+                                            <img ng-src="{{ item.owner_picture }}" alt="{{ item.owner_name }}" width="35px" height="35px">
+                                        </figure>
+                                        <div class="owner-meta">
+                                            <h4><a href="">{{ item.owner_name }}</a><span class="owner-status on"></span></h4>
+                                            <span>{{ item.owner_college }}</span>
+                                        </div><!-- End .owner-meta -->
+                                    </div><!-- End .item-owner -->
+                                    <div class="item-action">
+                                        <a href="" class="btn btn-custom4 btn-border" ng-show="currentMenu=='profile_edit'" ng_click="edit_item(item)">Edit</a>
+                                    </div><!-- End .item-action -->
+                                </div><!-- End .item-content -->
+                            </article>
+                        </div><!-- End .tab-pane -->
+                      </div><!-- End .tab-content -->
+                </div><!-- End .col-content -->
+                <div class="col-side">
+					<ul class="nav nav-tabs no-margin" role="tablist">
+						<li role="presentation" class="tab-pane lowercase active">
+							<a href="">Connections</a>
+						</li>
+						<li role="presentation" class="tab-pane lowercase">
+							<a href="">Reviews</a>
+						</li>
+					</ul>
+
+					<!-- Tab panes -->
+					<div class="tab-content">
+						<div role="tabpanel" class="tab-pane active">
+							<div class="connections-box welcome-profile">
+								<div class="search-box">
+									<input type="text" placeholder="Search classmate name..." id="search-text-input" />
+									<a id="button-holder">
+										<img src="images/search_btn.png" />
+									</a>
+								</div>
+								<div style="clear: both;"></div>
+								<div class="nono-msg">
+									NO REVIEWS YET
+								</div>
+								<p class="tip-msg">Getting a review is simple</p>
+
+								<div class="notice-box">
+									<div>
+										<div class="numberCircle">1</div><div class="notice-msg">Post a Knack or an Item</div><div style="clear: both;"></div>
+									</div>
+									<div>
+										<div class="numberCircle">2</div><div class="notice-msg">Do good business</div><div style="clear: both;"></div>
+									</div>
+									<div>
+										<div class="numberCircle">3</div><div class="notice-msg">Get a review</div><div style="clear: both;"></div>
+									</div>
+								</div>
+								<div class="alter-msg">
+									<p>Your reviews<br>will appear here</p>
+									<p></p>
+								</div>
+							</div>
+						</div><!-- End .tab-pane -->
+						<div role="tabpanel" class="tab-pane">
+							<div class="reviews-box">
+								<h3>Reviews <a href="#" class="pull-right">Show all(5)</a></h3>
+								<div class="review-overall">
+									<p>Overal Rating</p>
+									<div class="ratings-container">
+										<span class="ratings-count"><strong>4.2</strong> / 5.0</span>
+										<div class="ratings-wrapper">
+											<div class="ratings" style="width:80%;"></div><!-- End .ratings -->
+										</div><!-- End .ratings-wrapper -->
+									</div><!-- End .ratings-container -->
+								</div><!-- End .review-overall -->
+
+								<div class="review">
+									<div class="review-content">
+										Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum'.
+									</div><!-- End .review-content -->
+									<div class="review-wrapper clearfix">
+										<div class="item-owner">
+											<figure>
+												<img src="images/users/user1.jpg" alt="Derek Wilson">
+											</figure>
+											<div class="owner-meta">
+												<h4><a href="#">Derek Wilson</a></h4>
+												<span>Fisher college</span>
+											</div><!-- End .owner-meta -->
+										</div><!-- End .item-owner -->
+										<div class="rating-single">
+											<i class="icon-rating-single"></i>
+											<span class="ratings-count">4</span>
+										</div><!-- End .rating-single -->
+									</div><!-- End .review-wrapper -->
+								</div><!-- .End .review -->
+
+								<div class="review">
+									<div class="review-content">
+										Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum'.
+									</div><!-- End .review-content -->
+									<div class="review-wrapper clearfix">
+										<div class="item-owner">
+											<figure>
+												<img src="images/users/user6.jpg" alt="James Poter">
+											</figure>
+											<div class="owner-meta">
+												<h4><a href="#">James Poter</a></h4>
+												<span>Harvard University</span>
+											</div><!-- End .owner-meta -->
+										</div><!-- End .item-owner -->
+										<div class="rating-single">
+											<i class="icon-rating-single"></i>
+											<span class="ratings-count">5</span>
+										</div><!-- End .rating-single -->
+									</div><!-- End .review-wrapper -->
+								</div><!-- .End .review -->
+
+								<footer>
+									<a href="#" title="Write a Review" data-toggle="modal" data-target="#review-modal">WRITE A REVIEW</a>
+								</footer>
+							</div><!-- End .reviews-box -->	
+						</div><!-- End .tab-pane -->
+					</div>
+
+                    
+                </div><!-- End .col-side -->
+            </div><!-- End .special-row -->
+        </div><!-- End .container -->
+        <footer class="footer">
+            <div class="container">
+                <!--<ul class="footer-menu clearfix">
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Feedback</a></li>
+                    <li><a href="#">Terms</a></li>
+                    <li><a href="#">Privacy</a></li>
+                </ul>-->
+				<p class="say-hello">SAY HELLO</p>
+                <div class="social-icons">
+                    <a href="#" class="social-icon icon-facebook social-icon1" title="Like us on Facebook">Facebook</a>
+                    <a href="#" class="social-icon icon-twitter social-icon1" title="Find us on Twitter">Twitter</a>
+                    <a href="#" class="social-icon icon-instagram social-icon1" title="Find us on Instagram">Instagram</a>
+                </div><!-- End .social-icons -->
+                <p class="copyright">&copy; 2015 Uknack. All rights reserved</p>
+            </div><!-- End .container -->
+        </footer>
+    </div><!-- End #content -->
+
+    <aside class="sidebar profile" role="complementary" ng-class="{'user-can-edit': currentMenu=='profile_edit'}" ng-hide="user_not_found">
+            <div class="sidebar-wrapper"
+                 ng-nicescroll
+                 nice-option="{zindex: 9999,
+                               autohidemode: true,
+                               background: '' ,
+                               cursorcolor: '#d7e0e1',
+                               cursorwidth: '5px',
+                               cursorborder: 'none',
+                               cursorborderradius: '4px'}">
+
+            <div class="widget widget-user">
+                <div class="user">
+					<img class="checked" src="images/checked.png" />
+					<img class="camera" src="images/camera.png" />
+                    <figure>
+                        <img src="images/default-photo.png" alt="User" width="100px" height="100px">
+                        <figcaption>
+                            <input type="file" class="fileupload" file-model="user_post_data.picture" onchange="angular.element(this).scope().save_profile()">
+                            <i class="icon-camera-white"></i>
+                        </figcaption>
+                    </figure>
+                    <h3 class="user-title">{{ user.full_name || 'Name' }}</h3>
+                    <p class="user-college">University</p>
+                    <a id="edit-name" class="edit-icon dropdown-toggle" title="Edit" ng-click="edit_profile('name', $event)"></a>
+                    <div class="dropdown" ng-class="{ open:edit_field=='name' }">
+                        <div class="dropdown-menu" aria-labelledby="edit-name" outside_click="close_edit()">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="full_name" ng-model="user_post_data.full_name" placeholder="Full Name">
+                            </div>
+                            <div class="form-group">
+                                <select class="form-control">
+                                    <option value="">Boston University</option>
+                                    <option value="">Harvard University</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <select class="form-control">
+                                    <option value="">Sophoomone</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="age" placeholder="age" value="22 years old">
+                            </div>
+                            <button type="button" class="btn btn-custom3 btn-block" ng-click="save_profile();"><strong>SAVE</strong></button>
+                        </div><!-- End .dropdown-menu -->
+                    </div><!-- End .dropdown -->
+                </div><!-- End .user -->
+            </div>
+
+
+
+            <div class="widget promote">
+                <div class="cost">
+                    <p>$0</p>
+                    Since Today
+                </div>
+				<div class="rating">
+
+                    <span>Year &middot; y/o</span><br/>
+                    <div class="ratings-container">
+                        <span class="ratings-wrapper">
+                            <span class="ratings" style="width:0;"></span>
+                        </span>
+                        <span class="ratings-count">(0)</span>
+                    </div>
+				</div>
+                <div class="dropdown promote-dropdown" ng-class="{ open:edit_field=='promote'}">
+                    <a class="btn btn-custom3 btn-block user-promote-btn dropdown-toggle" ng-click="edit_profile('promote', $event)"><strong>PROMOTE YOUR PAGE</strong></a>
+                    <ul class="dropdown-menu" outside_click="close_edit()">
+                        <li><a href="#" ><span class="social-icon icon-facebook-color" title="Like us on Facebook">Facebook</span> Share on Facebook</a></li>
+                        <li><a href="#" ><span class="social-icon icon-twitter-color" title="Like us on Facebook">Twitter</span> Share on Twitter</a></li>
+                        <li><a href="#" ><span class="social-icon icon-instagram-color" title="Like us on Facebook">Instagram</span> Share on Instagram</a></li>
+                    </ul>
+                </div><!-- End .dropdown -->
+            </div><!-- End .widget -->
+
+
+
+            <div class="widget social">
+                <div class="social-icons">
+                    <a href="#" class="social-icon icon-facebook-color" title="Like us on Facebook">Facebook</a>
+                    <a href="#" class="social-icon icon-twitter-color" title="Find us on Twitter">Twitter</a>
+                    <a href="#" class="social-icon icon-instagram-color" title="Find us on Instagram">instagram</a>
+                    <a href="#" class="social-icon icon-googleplus-color" title="Find us on Google+">google plus</a>
+                </div><!-- End .social-icons -->
+                <a href="" id="edit-social" class="edit-icon dropdown-toggle" title="Edit" ng-click="edit_profile('social', $event)"></a>
+                <div class="dropdown" ng-class="{ open:edit_field=='social' }">
+                    <div class="dropdown-menu" aria-labelledby="edit-social" outside_click="close_edit()">
+                        <div class="form-group">
+                            <span class="input-social input-twitter"></span>
+                            <input type="text" class="form-control" name="twitter" ng-model="user_post_data.social_links.twitter" placeholder="Twitter">
+                        </div><!-- End .form-group -->
+                        <div class="form-group">
+                            <span class="input-social input-instagram"></span>
+                            <input type="text" class="form-control" name="instagram" ng-model="user_post_data.social_links.instagram" placeholder="Instagram">
+                        </div><!-- End .form-group -->
+                        <div class="form-group">
+                            <span class="input-social input-facebook"></span>
+                            <input type="text" class="form-control" name="facebook" ng-model="user_post_data.social_links.facebook" placeholder="Facebook">
+                        </div><!-- End .form-group -->
+                        <div class="form-group">
+                            <span class="input-social input-googleplus"></span>
+                            <input type="text" class="form-control" name="googleplus" ng-model="user_post_data.social_links.googleplus" placeholder="Googleplus">
+                        </div><!-- End .form-group -->
+                        <button type="button" class="btn btn-custom3 btn-block" ng-click="save_profile();"><strong>SAVE</strong></button>
+                    </div><!-- End .dropdown-menu -->
+                </div><!-- End .dropdown -->
+            </div><!-- End .widget -->
+
+
+
+            <div class="widget hire-me">
+                <div class="desc edit-section dropdown" ng-class="{ open:edit_field=='description' }">You’ll hire me because...
+                    <a href="" id="edit-services" class="edit-icon dropdown-toggle" title="Edit" ng-click="edit_profile('description', $event)"></a>
+                    <div class="dropdown-menu" aria-labelledby="edit-services" outside_click="close_edit()">
+                        <div class="form-group" ng-repeat="desc in user_post_data.descriptions track by $index">
+                            <input type="text" class="form-control" name="description" ng-model="desc.description">
+                        </div><!-- End .form-group -->
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <button type="button" class="btn btn-custom3 btn-block" ng-click="save_profile();"><strong>SAVE</strong></button>
+                            </div><!-- End .col-xs-6 -->
+                            <div class="col-xs-6">
+                                <button type="submit" class="btn btn-custom4 btn-border btn-block" ng-click="add_more_description()">Add more</button>
+                            </div><!-- End .col-xs-6 -->
+                        </div><!-- End .row -->
+                    </div><!-- End .dropdown-menu -->
+                </div><!-- End .dropdown -->
+                <!--
+                <div class="hire-me-box" ng-repeat="desc in user.descriptions">{{ desc.description }}</div><!-- End .about-box -->
+
+                <div class="hire-me-box">I'm an awsome knacker</div>
+                <div class="hire-me-box">Who absolutely loves what I do</div>
+                <div class="hire-me-box">I'm fun, fair and honest</div>
+                <div class="hire-me-box">I'll do a great job everytime</div>
+                <div class="hire-me-box">you'll really love your knack</div>
+
+            </div><!-- End .widget -->
+
+
+
+            <div class="widget about">
+                <div class="desc edit-section dropdown" ng-class="{ open:edit_field=='about' }">More about me...
+                    <a href="" id="edit-services" class="edit-icon dropdown-toggle" title="Edit" ng-click="edit_profile('about', $event)"></a>
+                    <div class="dropdown-menu" aria-labelledby="edit-services" outside_click="close_edit()">
+                        <div class="form-group">
+                            <textarea class="form-control">I’m a senior here at Emerson University and study communications. I love writing, reading, photography and Math. Contact me anytime if you need help.</textarea>
+                        </div><!-- End .form-group -->
+                        <button type="button" class="btn btn-custom3 btn-block" ng-click="save_profile();"><strong>SAVE</strong></button>
+                    </div><!-- End .dropdown-menu -->
+                </div><!-- End .dropdown -->
+                <p class="more-about-text">I’m a senior here at Emerson University and study communications. I love writing, reading, photography and Math. Contact me anytime if you need help.</p>
+            </div><!-- End .widget -->
+
+
+
+            <div class="widget payment-method">
+                <div class="desc edit-section dropdown" ng-class="{ open:edit_field=='payment-method' }">My payment method
+                    <a href="" id="edit-services" class="edit-icon dropdown-toggle" title="Edit" ng-click="edit_profile('payment-method', $event)"></a>
+                    <div class="dropdown-menu" aria-labelledby="edit-services" outside_click="close_edit()">
+                        <p>Enter your payment method to get paid directly</p>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <img src="images/sprites-images/venmo.png" class="venmo-img" />
+                                </div>
+                                <div class="col-xs-8">
+                                    <input type="text" class="form-control" name="Venmo" placeholder="venmo.com/username">
+                                </div>
+                            </div>
+                        </div><!-- End .form-group -->
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <img src="images/sprites-images/paypal.png" class="paypal-img" />
+                                </div>
+                                <div class="col-xs-8">
+                                    <input type="text" class="form-control" name="Paypal" placeholder="paypal.com/username">
+                                </div>
+                            </div>
+                        </div><!-- End .form-group -->
+                        <button type="button" class="btn btn-custom3 btn-block" ng-click="save_profile();"><strong>SAVE</strong></button>
+                    </div><!-- End .dropdown-menu -->
+                </div><!-- End .dropdown -->
+            </div><!-- End .widget -->
+
+
+
+            <div class="widget uknack-url">
+                <div class="desc edit-section dropdown" ng-class="{ open:edit_field=='uknack-url' }">My Uknack URL
+                    <a href="" id="edit-services" class="edit-icon dropdown-toggle" title="Edit" ng-click="edit_profile('uknack-url', $event)"></a>
+                    <div class="dropdown-menu" aria-labelledby="edit-services" outside_click="close_edit()">
+                        <p>Promote your page with your Uknack URL</p>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="Uknack URL" placeholder="www.uknack.com/username">
+                        </div><!-- End .form-group -->
+                        <button type="button" class="btn btn-custom3 btn-block" ng-click="save_profile();"><strong>SAVE</strong></button>
+                    </div><!-- End .dropdown-menu -->
+                </div><!-- End .dropdown -->
+            </div><!-- End .widget -->
+
+
+
+            <footer class="footer">
+                <div class="footer-wrapper">
+                    <!--<ul class="footer-menu clearfix">
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Feedback</a></li>
+                    <li><a href="#">Terms</a></li>
+                    <li><a href="#">Privacy</a></li>
+                </ul>-->
+                    <p class="say-hello">SAY HELLO</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon icon-facebook social-icon1" title="Like us on Facebook">Facebook</a>
+                        <a href="#" class="social-icon icon-twitter social-icon1" title="Find us on Twitter">Twitter</a>
+                        <a href="#" class="social-icon icon-instagram social-icon1" title="Find us on Instagram">Instagram</a>
+                    </div><!-- End .social-icons -->
+                    <p class="copyright">&copy; 2015 Uknack. All rights reserved</p>
+                </div>
+            </footer>
+        </div><!-- End .sidebar-wrapper -->
+
+    </aside>
+    <!--
+    <div class="sidebarbg-mobile"></div><!-- end .sidebarbg-mobile -->
